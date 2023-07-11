@@ -1,0 +1,242 @@
+@import '../base';
+
+.services {
+  
+  //.services__wrapper 
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > * + * {
+      @include viewport-desktop {
+        margin-top: px-to-rem(74);
+      }
+      @include viewport-tablet {
+        margin-top: px-to-rem(52);
+      }
+      @include viewport-phone {
+        margin-top: px-to-rem(32);
+      }
+    }
+  }
+  
+  //.services__header 
+  &__header {
+    width: 100%;
+
+    > * + * {
+      @include viewport-desktop {
+        margin-top: px-to-rem(64);
+      }
+      @include viewport-tablet {
+        margin-top: px-to-rem(40);
+      }
+      @include viewport-phone {
+        margin-top: px-to-rem(14);
+      }
+    }
+  }
+  
+  //.services__title 
+  &__title {
+    @include text-heading-2;
+  }
+  
+  //.services__subtitle 
+  &__subtitle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 500;
+    line-height: 116%;
+
+    @include viewport-desktop {
+      font-size: px-to-rem(36);
+    }
+    @include viewport-tablet {
+      font-size: px-to-rem(26);
+    }
+    @include viewport-phone {
+      font-size: px-to-rem(16);
+    }
+
+    > * + * {
+      @include viewport-tablet-min {
+        margin-left: px-to-rem(12);
+      }      
+      @include viewport-phone {
+        margin-left: px-to-rem(8);
+      }
+    }
+
+    img {
+      flex-shrink: 0;
+      width: 100%;
+      height: auto;
+
+      @include viewport-tablet-min {
+        max-width: px-to-rem(136);
+      }
+      @include viewport-phone {
+        max-width: px-to-rem(74);
+      }
+    }
+  }
+  
+  //.services__main 
+  &__main {
+    width: 100%;
+
+    > * + * {
+      @include viewport-desktop {
+        margin-top: px-to-rem(50);
+      }
+      @include viewport-tablet {
+        margin-top: px-to-rem(36);
+      }
+      @include viewport-phone {
+        margin-top: px-to-rem(16);
+      }
+    }
+  }
+  
+  //.services__list 
+  &__list {
+    width: 100%;
+
+    @include viewport-tablet-min {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    > li {
+      width: 100%;
+    }
+
+    > * + * {
+      @include viewport-tablet-min {
+        margin-left: px-to-rem(24);
+      }
+      @include viewport-phone {
+        margin-top: px-to-rem(16);
+      }
+    }
+  }
+  
+  //.services-button 
+  &-button {
+    @include reset-button;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: px-to-rem(20);
+    box-shadow: 0 1px 10px 0 rgba(var(--color-black-200--rgb), 0.2);
+    overflow: hidden;
+
+    text-align: left;
+
+    @include viewport-desktop {
+      height: 100%;
+      padding: px-to-rem(30) px-to-rem(4) px-to-rem(30) px-to-rem(22);
+    }
+
+    @include viewport-tablet {
+      height: 100%;
+      padding: px-to-rem(22) px-to-rem(4) px-to-rem(20) px-to-rem(16);
+    }
+
+    @include viewport-phone {
+      min-height: px-to-rem(124);
+      padding: px-to-rem(16) px-to-rem(4) px-to-rem(16) px-to-rem(12);
+    }
+
+    > * + * {
+      margin-left: px-to-rem(16);
+    }
+
+    //.services-button__label 
+    &__label {
+      flex-shrink: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      @include viewport-desktop {
+        align-self: flex-start;
+        max-width: px-to-rem(61);
+      }
+      
+      @include viewport-tablet {
+        align-self: flex-start;
+        max-width: px-to-rem(46);
+      }
+
+      @include viewport-phone {
+        max-width: px-to-rem(46);
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    
+    //.services-button__text 
+    &__text {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      @include viewport-desktop {
+        font-size: px-to-rem(16);
+      }
+      @include viewport-tablet-max {
+        font-size: px-to-rem(14);
+      }
+
+      > * + * {
+        margin-top: px-to-rem(4);
+      }
+    }
+    
+    //.services-button__title 
+    &__title {
+      @include text-heading-4;
+      text-transform: unset;
+
+      @include viewport-tablet {
+        font-size: px-to-rem(20);
+      }
+      @include viewport-phone {
+        font-size: px-to-rem(20);
+      }
+    }
+    
+    //.services-button__description 
+    &__description {
+    }
+    
+    //.services-button__arrow 
+    &__arrow {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: px-to-rem(32);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: px-to-rem(4);
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+$colors: (
+  'white': #fff,
+  'black': #000,
+  'black-100': #2c3237,
+  'black-200': #07170e,
+
+  'red': #e75213,
+  'red-100': #a48105,
+  'red-200': #deb4b4,
+
+  'violet': #f7e3fd,
+  'violet-100':#f7c5fd,
+  'violet-200':#9790d0,
+
+  'violet-300':#f8c6fe,
+  'violet-400':#8083c5,
+
+
+  'green': #4b795e,
+  'grey': #e6e6e6,
+  'grey-100': #575757,
+  'grey-200': #cecece,
+  'grey-300': #f5f5f5,
+  
+  'highlight': #e75213,
+
+  'technology-1': #f1f8f4,
+  'technology-2': #f1f3f8,
+  'technology-3': #f5fce5,
+
+  'help-1': #a07f26,
+  'help-2': #fab638,
+  'help-3': #922274,
+  'help-4': #b8172f,
+  'help-5': #cc046a,
+  'help-6': #48c9f1,
+  'help-7': #0e978f,
+  'help-8': #d1f484,
+  'help-9': #5f8907,
+);
+
+@function hex-to-rgb ($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+  
+:root {
+  @each $key, $value in $colors {
+    --color-#{$key}: #{$value};
+    --color-#{$key}--rgb: #{hex-to-rgb($value)};
+  }
+}
+
+html {
+  //background-color: var(--color-violet-400);
+  background-color: var(--color-violet-300);
+  color: var(--color-black);
+}
