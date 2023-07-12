@@ -1,0 +1,37 @@
+@import '../base';
+
+.accordion-list {
+  
+  //.accordion-list__item 
+  // &__item {
+  // }
+  
+  //.accordion-list__summary 
+  &__summary {
+    position: relative;
+    z-index: 1;
+  }
+  
+  //.accordion-list__details 
+  &__details {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+
+    // @at-root .accordion-list__item.active & {
+    //   opacity: 1;
+    //   height: auto;
+    // }
+
+    @at-root .accordion-list.services__list & {
+      @include viewport-phone {
+        margin-top: px-to-rem(-30);
+        margin-bottom: px-to-rem(46);
+      }
+    }
+  }
+  
+  //.accordion-list__inner 
+  // &__inner {
+  // }
+}

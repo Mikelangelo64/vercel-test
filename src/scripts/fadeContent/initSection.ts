@@ -4,6 +4,7 @@ import makeTimeline from './makeTimeline';
 interface IStateItem {
   key: string;
   item: HTMLElement | undefined;
+  button: HTMLElement | undefined;
 }
 
 interface IState {
@@ -26,10 +27,12 @@ const initFadeSection = (section: HTMLElement, activeKey: string = '1') => {
     active: {
       key: activeKey,
       item: undefined,
+      button: undefined,
     },
     prev: {
       key: activeKey,
       item: undefined,
+      button: undefined,
     },
     parent: {
       item: parent,
@@ -50,11 +53,18 @@ const initFadeSection = (section: HTMLElement, activeKey: string = '1') => {
     return;
   }
 
+  state.active.button = section.querySelector(
+    '.fade-section__button.active'
+  ) as HTMLElement;
+
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const data = button.dataset.item;
       state.prev.key = state.active.key;
       state.active.key = data || '1';
+
+      state.prev.button = state.active.button;
+      state.active.button = button;
 
       let showItem: HTMLElement | undefined;
       let hideItem: HTMLElement | undefined;
@@ -62,6 +72,11 @@ const initFadeSection = (section: HTMLElement, activeKey: string = '1') => {
       if (state.prev.key === state.active.key) {
         return;
       }
+
+      if (state.prev.button) {
+        state.prev.button.classList.remove('active');
+      }
+      state.active.button.classList.add('active');
 
       items.forEach((item) => {
         if (item.dataset.item === state.active.key) {

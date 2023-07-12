@@ -47,6 +47,15 @@
     @include viewport-phone {
       text-align: center;
     }
+
+    > * + * {
+      @include viewport-tablet-min {
+        margin-top: px-to-rem(16);
+      }
+      @include viewport-phone {
+        margin-top: px-to-rem(28);
+      }
+    }
   }
   
   //.banner__title 
@@ -73,6 +82,8 @@
   //.banner__description 
   &__description {
     &._desk {
+      margin-top: px-to-rem(12);
+      
       @include viewport-phone {
         display: none;
       }

@@ -21,7 +21,14 @@
     overflow: hidden;
     outline: none;
 
-    background-color: var(--color-red);
+    //background-color: var(--color-red);
+
+    @at-root .fade-section.services__main & {
+      padding: px-to-rem(4);
+      margin-left: px-to-rem(-4);
+      margin-right: px-to-rem(-4);
+      margin-bottom: px-to-rem(-4);
+    }
 
     //.fade-section-content__item 
     &__item {

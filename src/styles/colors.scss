@@ -15,6 +15,9 @@ $colors: (
   'violet-300':#f8c6fe,
   'violet-400':#8083c5,
 
+  'violet-500':#f4c3fc,
+  'violet-600':#a698d7,
+
 
   'green': #4b795e,
   'grey': #e6e6e6,
@@ -52,6 +55,6 @@ $colors: (
 
 html {
   //background-color: var(--color-violet-400);
-  background-color: var(--color-violet-300);
+  background-color: var(--color-red-200);
   color: var(--color-black);
 }
