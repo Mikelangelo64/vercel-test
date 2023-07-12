@@ -6,6 +6,7 @@ import accordionsInit from './accordion/init';
 import stagesStylesInit from './stages/init';
 import initTitleLines from './titleLines/init';
 import vevet from './config/vevet';
+import videoHandler from './video';
 
 export const init = () => {
   scrollBarInit();
@@ -13,6 +14,7 @@ export const init = () => {
   fadeContentInit();
   accordionsInit();
   stagesStylesInit();
+  // videoHandler();
 
   if (!vevet.viewport.isPhone) {
     initTitleLines();
