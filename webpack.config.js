@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 // generate multiple html files
@@ -13,7 +14,7 @@ const multipleHtmlPlugins = htmlPageNames.map((name) => {
 });
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     index: {
       import: './src/index.ts',
@@ -53,17 +54,17 @@ module.exports = {
     runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
-      // cacheGroups: {
-      //   vendor: {
-      //     filename: 'vendor.js',
-      //     test: /[\\/]node_modules[\\/]/,
-      //     name: 'vendors',
-      //     chunks: 'all',
-      //   },
-      // },
+      cacheGroups: {
+        vendor: {
+          filename: 'vendor.js',
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
     },
-    // splitChunks: {
-    // },
+
+    minimizer: ['...', new CssMinimizerPlugin()],
   },
 
   resolve: {
