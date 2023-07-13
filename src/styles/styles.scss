@@ -105,12 +105,12 @@ section {
   // }
 
   &._first-section {
-    @include viewport-tablet-min {
-      margin-top: px-to-rem(74);
-    }
-    @include viewport-phone {
-      margin-top: px-to-rem(72);
-    }
+    // @include viewport-tablet-min {
+    //   margin-top: px-to-rem(74);
+    // }
+    // @include viewport-phone {
+    //   margin-top: px-to-rem(72);
+    // }
   }
 
   .section-header {

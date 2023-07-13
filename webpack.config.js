@@ -15,6 +15,7 @@ const multipleHtmlPlugins = htmlPageNames.map((name) => {
 
 module.exports = {
   mode: process.env.NODE_ENV,
+  // mode: 'development',
   entry: {
     index: {
       import: './src/index.ts',
