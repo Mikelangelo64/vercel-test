@@ -122,6 +122,7 @@
     &__container {
       padding-top: 53.75%;
       opacity: 0;
+      @include transition(0.6s ease);
     }
 
     .canvas-logo {

@@ -22,7 +22,6 @@ const animationCanvasInit = () => {
 
   const imgArr = [img1, img2, img3];
 
-  console.log('hui');
   makeAnimation(containerEl, canvasEl, ctx, imgArr);
 };
 animationCanvasInit();

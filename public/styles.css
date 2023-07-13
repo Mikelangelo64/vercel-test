@@ -2154,6 +2154,9 @@ html:not(.v-mobile) .footer-menu__item:focus-visible::before {
 .banner-canvas__container {
   padding-top: 53.75%;
   opacity: 0;
+  transition: 0.6s ease;
+  transition-delay: 0s;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .banner-canvas .canvas-logo {
   position: absolute;
