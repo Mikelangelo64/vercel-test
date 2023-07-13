@@ -14,7 +14,15 @@ const multipleHtmlPlugins = htmlPageNames.map((name) => {
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: {
+    index: {
+      import: './src/index.ts',
+    },
+    animation: {
+      import: './src/scripts/animationCanvas/animationCanvas.ts',
+    },
+  },
+  // ['./src/index.ts', './src/scripts/animationCanvas/animationCanvas.ts'],
 
   devServer: {
     // static: './public',
@@ -25,7 +33,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       // filename: 'index.html',
-      // chunks: ['header'],
+      // chunks: ['index', 'animation'],
     }),
     new MiniCssExtractPlugin({
       filename: 'styles.css',
@@ -33,23 +41,27 @@ module.exports = {
   ].concat(multipleHtmlPlugins),
 
   output: {
-    filename: 'script.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
     clean: true,
   },
 
-  // optimization: {
-  //   runtimeChunk: 'single',
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       vendor: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         name: 'vendors',
-  //         chunks: 'all',
-  //       },
-  //     },
-  //   },
-  // },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      // cacheGroups: {
+      //   vendor: {
+      //     filename: 'vendor.js',
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name: 'vendors',
+      //     chunks: 'all',
+      //   },
+      // },
+    },
+    // splitChunks: {
+    // },
+  },
 
   resolve: {
     plugins: [new TsconfigPathsPlugin()],
@@ -101,7 +113,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(svg|gif|png|avif|jpe?g)$/,
+        test: /\.(webp|svg|gif|png|avif|jpe?g)$/,
         type: 'asset/resource',
         exclude: [/fonts/],
         generator: {
