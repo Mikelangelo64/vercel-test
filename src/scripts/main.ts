@@ -1,17 +1,10 @@
 import initPopups from './popup/init';
 import scrollBarInit from './scrollbar';
-// import animationCanvasInit from './animationCanvas/animationCanvas';
-// import fadeContentInit from './fadeContent/init';
-// import accordionsInit from './accordion/init';
-// import stagesStylesInit from './stages/init';
 import initTitleLines from './titleLines/init';
 import vevet from './config/vevet';
-// import videoHandler from './video';
 
 export const init = () => {
   scrollBarInit();
-  // animationCanvasInit();
-  // videoHandler();
 
   if (!vevet.viewport.isPhone) {
     initTitleLines();
@@ -42,7 +35,6 @@ export const init = () => {
   }
 
   const popups = initPopups();
-  // console.log(popups);
 
   const formArr = document.querySelectorAll('form');
   if (formArr.length !== 0) {

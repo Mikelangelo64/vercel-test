@@ -169,6 +169,17 @@ section {
   }
 }
 
+.v-preloader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: px-to-rem(60);
+
+  color: var(--color-black);
+  background-color: var(--color-violet);
+}
 
 
 //templates
