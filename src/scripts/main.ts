@@ -1,9 +1,9 @@
 import initPopups from './popup/init';
 import scrollBarInit from './scrollbar';
 // import animationCanvasInit from './animationCanvas/animationCanvas';
-import fadeContentInit from './fadeContent/init';
-import accordionsInit from './accordion/init';
-import stagesStylesInit from './stages/init';
+// import fadeContentInit from './fadeContent/init';
+// import accordionsInit from './accordion/init';
+// import stagesStylesInit from './stages/init';
 import initTitleLines from './titleLines/init';
 import vevet from './config/vevet';
 // import videoHandler from './video';
@@ -11,9 +11,6 @@ import vevet from './config/vevet';
 export const init = () => {
   scrollBarInit();
   // animationCanvasInit();
-  fadeContentInit();
-  accordionsInit();
-  stagesStylesInit();
   // videoHandler();
 
   if (!vevet.viewport.isPhone) {

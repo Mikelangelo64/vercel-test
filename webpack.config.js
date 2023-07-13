@@ -14,10 +14,13 @@ const multipleHtmlPlugins = htmlPageNames.map((name) => {
 });
 
 module.exports = {
-  mode: 'production',
+  mode: process.env.NODE_ENV,
   entry: {
     index: {
       import: './src/index.ts',
+    },
+    services: {
+      import: './src/services.ts',
     },
     animation: {
       import: './src/scripts/animationCanvas/animationCanvas.ts',
