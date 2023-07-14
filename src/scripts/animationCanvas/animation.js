@@ -2,6 +2,8 @@ import { gsap } from 'gsap';
 
 const makeAnimation = (containerEl, canvasEl, ctx, imgArr) => {
   const pics = [...imgArr];
+
+  const imageRes = 600;
   const resolution = 2;
   const params = {
     radius: 5 * resolution,
@@ -156,9 +158,9 @@ const makeAnimation = (containerEl, canvasEl, ctx, imgArr) => {
 
   function imageToParticles(img) {
     const imageRatio = img.width / img.height;
-    const pixelWidth = containerEl.clientWidth;
+    //const pixelWidth = containerEl.clientWidth;
 
-    size = [pixelWidth, pixelWidth / imageRatio];
+    size = [imageRes, imageRes / imageRatio];
     size = size.map((v) => resolution * v);
 
     canvasEl.width = size[0];
@@ -175,6 +177,8 @@ const makeAnimation = (containerEl, canvasEl, ctx, imgArr) => {
       mouse.y *= 1 + 2 * params.padding[1];
       mouse.x *= resolution;
       mouse.y *= resolution;
+      mouse.x *= imageRes / containerEl.clientWidth;
+      mouse.y *= imageRes / containerEl.clientWidth;
     };
     containerEl.ontouchmove = function (e) {
       const rect = e.target.getBoundingClientRect();
@@ -184,6 +188,8 @@ const makeAnimation = (containerEl, canvasEl, ctx, imgArr) => {
       mouse.y *= 1 + 2 * params.padding[1];
       mouse.x *= resolution;
       mouse.y *= resolution;
+      mouse.x *= imageRes / containerEl.clientWidth;
+      mouse.y *= imageRes / containerEl.clientWidth;
     };
 
     let touchMagnet = params.mouseMagnet;
