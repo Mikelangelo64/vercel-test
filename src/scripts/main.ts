@@ -1,14 +1,14 @@
 import initPopups from './popup/init';
 import scrollBarInit from './scrollbar';
 import initTitleLines from './titleLines/init';
-import vevet from './config/vevet';
+// import vevet from './config/vevet';
 
 export const init = () => {
   scrollBarInit();
 
-  if (!vevet.viewport.isPhone) {
-    initTitleLines();
-  }
+  initTitleLines();
+  // if (!vevet.viewport.isPhone) {
+  // }
 
   const header = document.querySelector('.header') as HTMLElement;
   // const headerHeight = header ? header.offsetHeight : 0;

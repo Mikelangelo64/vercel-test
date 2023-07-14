@@ -6,7 +6,7 @@ const changeWidth = (container: HTMLElement, title: HTMLElement) => {
 
 const initTitleLines = () => {
   const titleContainers: HTMLElement[] = Array.from(
-    document.querySelectorAll('.services-details__title__container')
+    document.querySelectorAll('.title__container')
   );
 
   if (titleContainers.length === 0) {
@@ -14,9 +14,7 @@ const initTitleLines = () => {
   }
 
   titleContainers.forEach((container) => {
-    const title: HTMLElement | null = container.querySelector(
-      '.services-details__title'
-    );
+    const title: HTMLElement | null = container.querySelector('.title');
 
     if (!title) {
       return;
