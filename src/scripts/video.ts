@@ -42,7 +42,7 @@ const videoHandler = () => {
   video.load();
 
   video.addEventListener('loadeddata', () => {
-    console.log(1);
+    // console.log(1);
     setTimeout(() => {
       container.classList.add('loaded');
     }, 0);

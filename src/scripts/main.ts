@@ -1,3 +1,6 @@
+import vevet from './config/vevet';
+import helpItemInit from './helpItem/init';
+import helpParallaxInit from './helpParallax/init';
 import initPopups from './popup/init';
 import scrollBarInit from './scrollbar';
 import initTitleLines from './titleLines/init';
@@ -7,8 +10,10 @@ export const init = () => {
   scrollBarInit();
 
   initTitleLines();
-  // if (!vevet.viewport.isPhone) {
-  // }
+  if (!vevet.isMobile) {
+    helpItemInit();
+    helpParallaxInit();
+  }
 
   const header = document.querySelector('.header') as HTMLElement;
   // const headerHeight = header ? header.offsetHeight : 0;

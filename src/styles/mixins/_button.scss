@@ -66,10 +66,17 @@
     z-index: 1;
 
     > * + * {
-      margin-left: px-to-rem(16);
+      @include viewport-tablet-min {
+        margin-left: px-to-rem(16);
+      }
+      @include viewport-phone {
+        margin-left: px-to-rem(6);
+      }
     }
 
+    img,
     svg {
+      flex-shrink: 0;
       width: px-to-rem(24);
       height: px-to-rem(24);
     }
@@ -82,6 +89,7 @@
   border: 0.6px solid var(--color-red);
   box-shadow: none;
   color: var(--color-red);
+  background-color: transparent;
   
   @include hover-focus-visible {
     @include non-mobile-device {
