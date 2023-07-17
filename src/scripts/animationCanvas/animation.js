@@ -5,9 +5,10 @@ const makeAnimation = (containerEl, canvasEl, ctx, imgArr) => {
 
   const imageRes = 600;
   const resolution = 2;
+  const mouseMagnetOriginal = 5000 * resolution;
   const params = {
     radius: 5 * resolution,
-    mouseMagnet: 5000 * resolution,
+    mouseMagnet: mouseMagnetOriginal,
     mouseThreshold: 0.5,
     padding: [0.1, 0.1],
     floatingSpeed: 10,
@@ -98,6 +99,9 @@ const makeAnimation = (containerEl, canvasEl, ctx, imgArr) => {
     gsap.delayedCall(transitionDuration, () => {
       timeout.play(0);
     });
+    gsap.to(params, {
+      mouseMagnet: 0,
+    });
   });
 
   window.addEventListener('resize', () => {});
@@ -171,39 +175,47 @@ const makeAnimation = (containerEl, canvasEl, ctx, imgArr) => {
 
   function addListeners() {
     containerEl.onmousemove = function (e) {
+      if (params.mouseMagnet < mouseMagnetOriginal) {
+        gsap.to(params, {
+          mouseMagnet: mouseMagnetOriginal,
+        });
+      }
+
       mouse.x = e.offsetX;
       mouse.y = e.offsetY;
-      mouse.x *= 1 + 2 * params.padding[0];
-      mouse.y *= 1 + 2 * params.padding[1];
-      mouse.x *= resolution;
-      mouse.y *= resolution;
-      mouse.x *= imageRes / containerEl.clientWidth;
-      mouse.y *= imageRes / containerEl.clientWidth;
+      adjustMousePosition();
     };
     containerEl.ontouchmove = function (e) {
       const rect = e.target.getBoundingClientRect();
       mouse.x = e.targetTouches[0].pageX - rect.left;
       mouse.y = e.targetTouches[0].pageY - rect.top;
+      adjustMousePosition();
+    };
+
+    containerEl.ontouchstart = function (e) {
+      gsap.to(params, {
+        mouseMagnet: mouseMagnetOriginal,
+      });
+      const rect = e.target.getBoundingClientRect();
+      mouse.x = e.targetTouches[0].pageX - rect.left;
+      mouse.y = e.targetTouches[0].pageY - rect.top;
+      adjustMousePosition();
+    };
+
+    containerEl.ontouchend = function () {
+      gsap.to(params, {
+        mouseMagnet: 0,
+      });
+    };
+
+    function adjustMousePosition() {
       mouse.x *= 1 + 2 * params.padding[0];
       mouse.y *= 1 + 2 * params.padding[1];
       mouse.x *= resolution;
       mouse.y *= resolution;
       mouse.x *= imageRes / containerEl.clientWidth;
       mouse.y *= imageRes / containerEl.clientWidth;
-    };
-
-    let touchMagnet = params.mouseMagnet;
-    containerEl.ontouchstart = function () {
-      gsap.to(params, {
-        mouseMagnet: touchMagnet,
-      });
-    };
-    containerEl.ontouchend = function () {
-      touchMagnet = params.mouseMagnet;
-      gsap.to(params, {
-        mouseMagnet: 0,
-      });
-    };
+    }
   }
 
   function shuffleArray(array) {
