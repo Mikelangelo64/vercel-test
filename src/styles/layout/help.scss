@@ -464,6 +464,7 @@
       transform: translateZ(0);
 
       box-shadow: 0 1px 25px 3px rgba(var(--color-black--rgb), 0.25);
+      background-color: rgba(var(--color-grey-200--rgb), 0.3);
 
       img {
         @include absolute-fullsize;
