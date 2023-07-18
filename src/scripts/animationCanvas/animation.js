@@ -174,39 +174,46 @@ const makeAnimation = (containerEl, canvasEl, ctx, imgArr) => {
   }
 
   function addListeners() {
+    containerEl.onmouseenter = function (e) {
+      gsap.to(params, {
+        duration: 0.5,
+        mouseMagnet: mouseMagnetOriginal,
+      });
+    };
+    containerEl.onmouseleave = function (e) {
+      gsap.to(params, {
+        duration: 0.5,
+        mouseMagnet: 0,
+      });
+    };
     containerEl.onmousemove = function (e) {
-      if (params.mouseMagnet < mouseMagnetOriginal) {
-        gsap.to(params, {
-          mouseMagnet: mouseMagnetOriginal,
-        });
-      }
-
       mouse.x = e.offsetX;
       mouse.y = e.offsetY;
       adjustMousePosition();
     };
-    containerEl.ontouchmove = function (e) {
-      const rect = e.target.getBoundingClientRect();
-      mouse.x = e.targetTouches[0].pageX - rect.left;
-      mouse.y = e.targetTouches[0].pageY - rect.top;
-      adjustMousePosition();
-    };
 
-    containerEl.ontouchstart = function (e) {
-      gsap.to(params, {
-        mouseMagnet: mouseMagnetOriginal,
-      });
-      const rect = e.target.getBoundingClientRect();
-      mouse.x = e.targetTouches[0].pageX - rect.left;
-      mouse.y = e.targetTouches[0].pageY - rect.top;
-      adjustMousePosition();
-    };
+    // containerEl.ontouchmove = function (e) {
+    //   const rect = e.target.getBoundingClientRect();
+    //   mouse.x = e.targetTouches[0].pageX - rect.left;
+    //   mouse.y = e.targetTouches[0].pageY - rect.top;
+    //   adjustMousePosition();
+    // };
 
-    containerEl.ontouchend = function () {
-      gsap.to(params, {
-        mouseMagnet: 0,
-      });
-    };
+    // containerEl.ontouchstart = function (e) {
+    //   gsap.to(params, {
+    //     mouseMagnet: mouseMagnetOriginal,
+    //   });
+    //   const rect = e.target.getBoundingClientRect();
+    //   mouse.x = e.targetTouches[0].pageX - rect.left;
+    //   mouse.y = e.targetTouches[0].pageY - rect.top;
+    //   adjustMousePosition();
+    // };
+
+    // containerEl.ontouchend = function () {
+    //   gsap.to(params, {
+    //     mouseMagnet: 0,
+    //   });
+    // };
 
     function adjustMousePosition() {
       mouse.x *= 1 + 2 * params.padding[0];
