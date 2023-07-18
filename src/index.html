@@ -665,7 +665,7 @@
 
             <div class="services__main mobile">
               <ul class="accordion-list services__list">
-                <li class="accordion-list__item active">
+                <li class="accordion-list__item">
                   <button
                     class="accordion-list__summary services-button"
                     aria-label="more"
@@ -1563,65 +1563,71 @@
         </div>
       </section>
 
-      <!-- <section class="contact">
+      <section class="contact">
         <div class="_container">
           <div class="contact__wrapper">
-            <div class="contact__content">
-              <h2 class="contact__title">There is so much more to show you</h2>
-              <div class="contact__description">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                  Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                  natoque penatibus et magnis dis parturient montes, nascetur
-                  ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                  eu, pretium quis, sem. Nulla consequat massa quis enim.
-                </p>
+            <h2 class="contact__title">
+              Have any questions? Knock on our contact form 
+            </h2>
+
+            <form action="post" class="contact-form">
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Full name..."
+                />
               </div>
-            </div>
 
-            <div class="contact-action">
-              <p class="contact-action__title">
-                Have any questions? Knock on our contact form 
-              </p>
+              <div>
+                <input
+                  type="text"
+                  name="company"
+                  id="company"
+                  placeholder="Company name..."
+                />
+              </div>
 
-              <form action="post" class="contact-form">
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Full name..."
-                  />
-                </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email..."
+                />
+              </div>
 
-                <div>
-                  <input
-                    type="text"
-                    name="company"
-                    id="company"
-                    placeholder="Company name..."
-                  />
-                </div>
+              <div>
+                <textarea
+                  name="comment"
+                  id="comment"
+                  placeholder="Message or request.."
+                ></textarea>
+                <!-- <label for="file" class="file">
+                  <div class="file__inner">
+                    <p class="file__placeholder">Message or request...</p>
+                  </div>
 
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Email..."
-                  />
-                </div>
+                  <div class="file__label">
+                    <img
+                      src="./assets/img/file-label.svg"
+                      alt="file label"
+                      aria-hidden="true"
+                    />
+                  </div>
 
-                <div>
-                  <label for="file">
-                    <input type="file" name="file" id="file" />
-                  </label>
-                </div>
-              </form>
-            </div>
+                  <input type="file" name="file" id="file" />
+                </label> -->
+              </div>
+
+              <div>
+                <button type="submit">Send message</button>
+              </div>
+            </form>
           </div>
         </div>
-      </section> -->
+      </section>
     </div>
   </body>
 </html>

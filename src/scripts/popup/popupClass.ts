@@ -57,11 +57,11 @@ class Popup {
 
   private _timeline: Timeline | undefined;
 
-  get closeButton() {
-    return this._closeButton;
+  get closeButtons() {
+    return this._closeButtons;
   }
 
-  private _closeButton: HTMLElement | null = null;
+  private _closeButtons: Array<HTMLElement | null> = [];
 
   get openButtons() {
     return this._openButtons;
@@ -94,11 +94,21 @@ class Popup {
     this._openButtons = Array.from(
       document.querySelectorAll(`[data-popup="${this._name}"]`)
     );
-    this._closeButton = this._parent.querySelector('.popup__close');
+    this._closeButtons = Array.from(
+      this._parent.querySelectorAll(
+        '.popup__close, .popup__button'
+      ) as NodeListOf<HTMLElement>
+    );
 
-    if (this._closeButton) {
-      this._closeButton.addEventListener('click', () => {
-        this._timeline?.reverse();
+    if (this._closeButtons.length !== 0) {
+      this._closeButtons.forEach((button) => {
+        if (!button) {
+          return;
+        }
+
+        button.addEventListener('click', () => {
+          this._timeline?.reverse();
+        });
       });
     }
 

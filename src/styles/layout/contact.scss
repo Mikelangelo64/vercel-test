@@ -1,0 +1,39 @@
+@import '../base';
+
+.contact {
+  
+  //.contact__wrapper 
+  &__wrapper {
+    max-width: px-to-rem(635);
+    width: 100%;
+    border-radius: px-to-rem(20);
+    margin-left: auto;
+    margin-right: auto;
+
+    @include viewport-tablet-min {
+      padding: px-to-rem(36) px-to-rem(38) px-to-rem(18);
+      background-color: var(--color-white);
+    }
+
+    @include viewport-phone {
+      padding: px-to-rem(32) px-to-rem(16);
+      backdrop-filter: blur(5px);
+      background-color: rgba(var(--color-white--rgb), 0.5);
+    }
+
+    > * + * {
+      @include viewport-tablet-min {
+        margin-top: px-to-rem(44);
+      }
+      @include viewport-phone {
+        margin-top: px-to-rem(38);
+      }
+    }
+  }
+  
+  //.contact__title 
+  &__title {
+    @include text-heading-3;
+    text-transform: unset;
+  }
+}
