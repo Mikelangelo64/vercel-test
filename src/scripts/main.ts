@@ -51,7 +51,7 @@ export const init = () => {
   if (formArr.length !== 0) {
     formArr.forEach((form) => {
       form.addEventListener('submit', (evt) => {
-        evt.preventDefault();
+        // evt.preventDefault();
         popups.forEach(({ timeline, isThanks }) => {
           if (isThanks) {
             timeline?.play();
