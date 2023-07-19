@@ -22,7 +22,8 @@ body {
   overflow-x: hidden;
   line-height: 116%;
 
-  &.lock {
+  &.lock,
+  &:not(.v-loaded) {
     overflow: hidden;
   }
 }
@@ -198,7 +199,17 @@ section {
   font-size: px-to-rem(60);
 
   color: var(--color-black);
-  background-color: var(--color-violet);
+  background-color: var(--color-white);
+
+  //.v-preloader__logo 
+  &__logo {
+    max-width: px-to-rem(136);
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 
 

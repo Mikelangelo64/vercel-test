@@ -1,3 +1,5 @@
+import accordionFooterInit from './accordion/initFooter';
+import anchorsInit from './anchor/init';
 import vevet from './config/vevet';
 import helpItemInit from './helpItem/init';
 import helpParallaxInit from './helpParallax/init';
@@ -13,10 +15,12 @@ export const init = () => {
   if (!vevet.isMobile) {
     helpItemInit();
     helpParallaxInit();
+  } else {
+    accordionFooterInit();
   }
 
   const header = document.querySelector('.header') as HTMLElement;
-  // const headerHeight = header ? header.offsetHeight : 0;
+  const headerHeight = header ? header.offsetHeight : 0;
   let isScrolled = false;
 
   if (header) {
@@ -40,6 +44,8 @@ export const init = () => {
   }
 
   const popups = initPopups();
+
+  anchorsInit(headerHeight, popups);
 
   const formArr = document.querySelectorAll('form');
   if (formArr.length !== 0) {

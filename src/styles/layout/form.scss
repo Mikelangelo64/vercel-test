@@ -12,11 +12,17 @@ textarea {
   border-bottom: 1px solid var(--color-black);
   padding-bottom: px-to-rem(12);
 
+  @include transition(border 0.4s);
+
   font-family: $font-family;
   font-size: px-to-rem(18);
   line-height: 100%;
   font-weight: 400;
   color: var(--color-black);
+
+  &:focus-visible {
+    border-color: var(--color-red);
+  }
 
   &::placeholder {
     font-size: inherit;
