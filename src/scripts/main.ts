@@ -53,7 +53,22 @@ export const init = () => {
       form.addEventListener('submit', (evt) => {
         evt.preventDefault();
         let response: string | Error = '';
+        let isBot = false;
         const formData = new FormData(form);
+
+        const inputs = Array.from(
+          form.querySelectorAll('input, textarea') as NodeListOf<
+            HTMLInputElement | HTMLTextAreaElement
+          >
+        );
+
+        inputs.forEach((input) => {
+          isBot = input.value !== '';
+        });
+
+        if (isBot) {
+          return;
+        }
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/form.php', true);
@@ -64,9 +79,17 @@ export const init = () => {
             // alert(response);
           }
           // console.log(response);
+
           popups.forEach(({ timeline, isThanks, isError }) => {
             if (isThanks && typeof response === 'string' && response !== '') {
               timeline?.play();
+
+              if (inputs.length !== 0) {
+                inputs.forEach((inputProp) => {
+                  const input = inputProp;
+                  input.value = '';
+                });
+              }
             } else if (isError && response === '') {
               timeline?.play();
             } else {
