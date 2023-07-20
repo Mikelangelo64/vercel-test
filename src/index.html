@@ -1560,13 +1560,14 @@
               Have any questions? Knock on our contact form 
             </h2>
 
-            <form action="post" class="contact-form">
+            <form method="post" class="contact-form">
               <div>
                 <input
                   type="text"
                   name="name"
                   id="name"
                   placeholder="Full name..."
+                  required
                 />
               </div>
 
@@ -1576,6 +1577,7 @@
                   name="company"
                   id="company"
                   placeholder="Company name..."
+                  required
                 />
               </div>
 
@@ -1585,6 +1587,7 @@
                   name="email"
                   id="email"
                   placeholder="Email..."
+                  required
                 />
               </div>
 
@@ -1593,6 +1596,7 @@
                   name="comment"
                   id="comment"
                   placeholder="Message or request.."
+                  required
                 ></textarea>
                 <!-- <label for="file" class="file">
                   <div class="file__inner">
@@ -1626,7 +1630,7 @@
               <a
                 href="#"
                 class="logo-link footer__logo anchor"
-                data-goto=".services"
+                data-goto=".banner"
               >
                 <img src="./assets/img/logo.svg" alt="logo" />
               </a>
