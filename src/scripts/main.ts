@@ -51,14 +51,32 @@ export const init = () => {
   if (formArr.length !== 0) {
     formArr.forEach((form) => {
       form.addEventListener('submit', (evt) => {
-        // evt.preventDefault();
-        popups.forEach(({ timeline, isThanks }) => {
-          if (isThanks) {
-            timeline?.play();
-          } else {
-            timeline?.reverse();
+        evt.preventDefault();
+        let response: string | Error = '';
+        const formData = new FormData(form);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/form.php', true);
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            response = xhr.responseText;
+            // Код в этом блоке выполняется при успешной отправке сообщения
+            // alert(response);
           }
-        });
+
+          // console.log(response);
+          popups.forEach(({ timeline, isThanks, isError }) => {
+            if (isThanks && typeof response === 'string' && response !== '') {
+              timeline?.play();
+            } else if (isError) {
+              timeline?.play();
+            } else {
+              timeline?.reverse();
+            }
+          });
+        };
+
+        xhr.send(formData);
       });
     });
 

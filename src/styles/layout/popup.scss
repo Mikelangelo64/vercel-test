@@ -154,6 +154,32 @@
         }
       }
     }
+
+    @at-root .popup.popup-error & {
+      justify-content: flex-end;
+      border-radius: px-to-rem(20);
+      border: 1px solid var(--color-red);
+      overflow: hidden;
+      transform: translateZ(0);
+
+      @include viewport-desktop {
+        max-width: px-to-rem(616);
+        padding: px-to-rem(86) px-to-rem(50);
+      }
+      
+      @include viewport-tablet {
+        max-width: px-to-rem(616);
+        padding: px-to-rem(74) px-to-rem(40);
+      }
+      
+      @include viewport-phone {
+        max-width: px-to-rem(500);
+
+        @media (max-width: 550px) {
+          max-width: 95%;
+        }
+      }
+    }
   }
   
   //.popup__close 

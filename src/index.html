@@ -210,6 +210,40 @@
             </div>
           </div>
         </div>
+
+        <div
+          class="popup popup-error"
+          data-popupname="_popup-error"
+          aria-modal="true"
+          role="dialog"
+        >
+          <div class="popup__overlay"></div>
+          <div class="popup__scroll">
+            <div class="popup__wrapper">
+              <button class="popup__close">
+                <img src="./assets/img/popup-close.svg" alt="close" />
+              </button>
+
+              <div class="popup__content">
+                <div class="popup__title__container">
+                  <p class="popup__title">Ooops</p>
+                  <p class="popup__subtitle">
+                    We have some problems, please try your send later
+                  </p>
+                </div>
+
+                <div class="popup__action">
+                  <!-- <a href="#" class="popup__button button"
+                    ><span>На головну</span></a
+                  > -->
+                  <button class="popup__button button">
+                    <span>ok</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </header>
 
       <section class="banner _first-section">
@@ -1560,7 +1594,7 @@
               Have any questions? Knock on our contact form 
             </h2>
 
-            <form method="post" class="contact-form">
+            <form action="/" method="post" class="contact-form">
               <div>
                 <input
                   type="text"
