@@ -21,6 +21,12 @@ class Popup {
 
   private _isThanks: boolean = false;
 
+  get isError() {
+    return this._isError;
+  }
+
+  private _isError: boolean = false;
+
   get scroll() {
     return this._scroll;
   }
@@ -82,6 +88,7 @@ class Popup {
       return;
     }
     this._isThanks = this._name === '_popup-thanks';
+    this._isError = this._name === '_popup-error';
 
     this._timeline = makeTimeline(
       this._parent,
