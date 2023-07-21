@@ -85,7 +85,7 @@ export const makeAnimationDesktop = (containerEl, canvasEl, ctx, imgArr) => {
     repeatDelay: timeoutDuration,
   });
 
-  window.addEventListener('click', () => {
+  containerEl.addEventListener('click', () => {
     timeout.pause();
     gsap.globalTimeline.getChildren().forEach((t) => {
       t.kill();
@@ -310,20 +310,12 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
 
   const imageRes = 600;
   const resolution = 2;
-  const mouseMagnetOriginal = 5000 * resolution;
   const params = {
     radius: 5 * resolution,
-    mouseMagnet: mouseMagnetOriginal,
-    mouseThreshold: 0.5,
     padding: [0.1, 0.1],
     floatingSpeed: 10,
     floatingDist: 15,
     sizeRandomness: 1,
-  };
-
-  let mouse = {
-    x: -100000,
-    y: -10000,
   };
 
   let data = [];
@@ -362,7 +354,6 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
             },
             xy: { x: data[activeIdx][i].xy.x, y: data[activeIdx][i].xy.y },
             base: { x: data[activeIdx][i].xy.x, y: data[activeIdx][i].xy.y },
-            target: { x: data[activeIdx][i].xy.x, y: data[activeIdx][i].xy.y },
             rand: [Math.random(), Math.random()],
             rBase: rad,
             r: rad,
@@ -377,7 +368,6 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
         gsap.set(containerEl, {
           opacity: 1,
         });
-        addListeners();
       }
       loadCnt++;
     };
@@ -390,7 +380,7 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
     repeatDelay: timeoutDuration,
   });
 
-  window.addEventListener('click', () => {
+  containerEl.addEventListener('click', () => {
     timeout.pause();
     gsap.globalTimeline.getChildren().forEach((t) => {
       t.kill();
@@ -398,9 +388,6 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
     switchPicture();
     gsap.delayedCall(transitionDuration, () => {
       timeout.play(0);
-    });
-    gsap.to(params, {
-      mouseMagnet: 0,
     });
   });
 
@@ -438,11 +425,6 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
           x: data[activeIdx][idx].xy.x,
           y: data[activeIdx][idx].xy.y,
         });
-        gsap.to(v.target, {
-          duration: d,
-          x: data[activeIdx][idx].xy.x,
-          y: data[activeIdx][idx].xy.y,
-        });
         gsap.to(v, {
           r: v.rBase,
         });
@@ -470,28 +452,6 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
     canvasEl.height = size[1];
     canvasEl.width += 2 * params.padding[0] * size[0];
     canvasEl.height += 2 * params.padding[1] * size[1];
-  }
-
-  function addListeners() {
-    containerEl.onmousemove = function (e) {
-      if (params.mouseMagnet < mouseMagnetOriginal) {
-        gsap.to(params, {
-          mouseMagnet: mouseMagnetOriginal,
-        });
-      }
-      mouse.x = e.offsetX;
-      mouse.y = e.offsetY;
-      adjustMousePosition();
-    };
-
-    function adjustMousePosition() {
-      mouse.x *= 1 + 2 * params.padding[0];
-      mouse.y *= 1 + 2 * params.padding[1];
-      mouse.x *= resolution;
-      mouse.y *= resolution;
-      mouse.x *= imageRes / containerEl.clientWidth;
-      mouse.y *= imageRes / containerEl.clientWidth;
-    }
   }
 
   function shuffleArray(array) {
@@ -551,11 +511,6 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
       ctx.fillStyle =
         'rgb(' + d.color.r + ', ' + d.color.g + ', ' + d.color.b + ')';
 
-      let dX = mouse.x - d.target.x;
-      let dY = mouse.y - d.target.y;
-
-      let sqDist = dX * dX + dY * dY;
-
       let floatingOffset = [
         (d.rand[0] > 0.5 ? -1 : 1) *
           Math.sin(params.floatingSpeed * d.speed * t + d.floatingTimeStart) *
@@ -564,20 +519,14 @@ export const makeAnimationMobile = (containerEl, canvasEl, ctx, imgArr) => {
           Math.cos(params.floatingSpeed * d.speed * t + d.floatingTimeStart) *
           d.floatingDist,
       ];
-      floatingOffset = floatingOffset.map((v) =>
-        activeIdx === 2 ? v * 0.5 : v
-      );
+      if (activeIdx === 1) {
+        floatingOffset = floatingOffset.map((v) => v * 0.4);
+      } else if (activeIdx === 2) {
+        floatingOffset = floatingOffset.map((v) => v * 0.5);
+      }
 
-      const mouseOffset = [
-        (params.mouseMagnet * dX) / sqDist,
-        (params.mouseMagnet * dY) / sqDist,
-      ];
-
-      d.target.x = d.base.x + floatingOffset[0] - mouseOffset[0];
-      d.target.y = d.base.y + floatingOffset[1] - mouseOffset[1];
-
-      d.xy.x += (d.target.x - d.xy.x) * params.mouseThreshold;
-      d.xy.y += (d.target.y - d.xy.y) * params.mouseThreshold;
+      d.xy.x = d.base.x + floatingOffset[0];
+      d.xy.y = d.base.y + floatingOffset[1];
 
       let radius = d.r;
       if (activeIdx === 1) {
