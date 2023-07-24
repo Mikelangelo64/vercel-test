@@ -1,4 +1,6 @@
-import videoSrc from '@/assets/video/bg.mp4';
+// import videoSrc from '@/assets/video/bg.mp4';
+
+import vevet from './config/vevet';
 
 const videoHandler = () => {
   const container: HTMLElement | null = document.querySelector('.video-bg');
@@ -13,31 +15,23 @@ const videoHandler = () => {
     return;
   }
 
-  // const video = document.createElement('video');
-  const source = document.createElement('source');
+  // const source = document.createElement('source');
+  const source = document.querySelector('source');
 
-  source.setAttribute('src', `${videoSrc}`);
-  source.setAttribute('type', 'video/mp4');
+  if (!source) {
+    return;
+  }
 
-  // video.setAttribute('preload', 'auto');
-  // video.setAttribute('autoplay', '');
-  // video.setAttribute('muted', '');
-  // video.setAttribute('playsinline', '');
-  // video.setAttribute('disablePictureInPicture', '');
-  // video.setAttribute('loop', '');
+  const dataSrc = source.dataset.src;
 
-  video.appendChild(source);
-  // container.appendChild(video);
-  // const children = Array.from(video.children) as HTMLSourceElement[];
+  if (!dataSrc) {
+    return;
+  }
 
-  // if (children.length === 0) {
-  //   return;
-  // }
+  source.src = dataSrc;
+  // source.setAttribute('type', 'video/mp4');
 
-  // children.forEach((item) => {
-  //   const sourceElement = item;
-  //   sourceElement.src = sourceElement.dataset.src || '';
-  // });
+  // video.appendChild(source);
 
   video.load();
 
@@ -49,6 +43,8 @@ const videoHandler = () => {
   });
 };
 
-videoHandler();
+vevet.pageLoad.onLoaded(() => {
+  videoHandler();
+});
 
 export default videoHandler;

@@ -29,5 +29,4 @@ const animationCanvasInit = () => {
     makeAnimationDesktop(containerEl, canvasEl, ctx, imgArr);
   }
 };
-animationCanvasInit();
 export default animationCanvasInit;

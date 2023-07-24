@@ -129,15 +129,16 @@
   
       opacity: 0.6;
     }
-
+    
     img {
       width: 100%;
       height: auto;
-
+      
       @include transition(transform 0.6s);
-
+      transform: rotate(180deg);
+      
       @at-root .footer.active .footer__button img {
-        transform: rotate(180deg);
+        transform: rotate(0);
       }
     }
   }

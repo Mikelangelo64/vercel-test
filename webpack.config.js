@@ -24,7 +24,7 @@ module.exports = {
       import: './src/services.ts',
     },
     animation: {
-      import: './src/scripts/animationCanvas/animationCanvas.ts',
+      import: './src/canvas.ts',
     },
     video: {
       import: './src/scripts/video.ts',

@@ -6,7 +6,6 @@ import helpParallaxInit from './helpParallax/init';
 import initPopups from './popup/init';
 import scrollBarInit from './scrollbar';
 import initTitleLines from './titleLines/init';
-// import vevet from './config/vevet';
 
 export const init = () => {
   scrollBarInit();

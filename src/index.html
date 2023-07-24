@@ -41,14 +41,14 @@
     <div class="video-bg">
       <video
         disablePictureInPicture
-        preload="auto"
+        preload="metadata"
         playsinline
         loop
         muted
         autoplay
         class="video-bg__video"
       >
-        <!-- <source data-src="./assets/video/bg.mp4" type="video/mp4" /> -->
+        <source data-src="./assets/video/bg.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -57,7 +57,11 @@
         <div class="_container header__container">
           <div class="header__wrapper">
             <div class="header__buttons">
-              <button class="menu-burger popup-open" data-popup="_popup-menu">
+              <button
+                class="menu-burger popup-open"
+                aria-label="menu"
+                data-popup="_popup-menu"
+              >
                 <span></span>
               </button>
 
@@ -307,7 +311,7 @@
                     </span>
 
                     <span class="services-button__text">
-                      <h4 class="services-button__title">Team augmentation</h4>
+                      <h3 class="services-button__title">Team augmentation</h3>
 
                       <span class="services-button__description">
                         Expand your team with experienced specialists
@@ -331,9 +335,9 @@
                     </span>
 
                     <span class="services-button__text">
-                      <h4 class="services-button__title">
+                      <h3 class="services-button__title">
                         Software engineering
-                      </h4>
+                      </h3>
 
                       <span class="services-button__description">
                         Solve the development problems and achieve the set goals
@@ -357,9 +361,9 @@
                     </span>
 
                     <span class="services-button__text">
-                      <h4 class="services-button__title">
+                      <h3 class="services-button__title">
                         Support consulting & In-house recruitment
-                      </h4>
+                      </h3>
 
                       <span class="services-button__description">
                         Use our knowledge and implement profitable solutions
@@ -690,7 +694,7 @@
                     </span>
 
                     <span class="services-button__text">
-                      <h4 class="services-button__title">Team augmentation</h4>
+                      <h3 class="services-button__title">Team augmentation</h3>
 
                       <span class="services-button__description">
                         Expand your team with experienced specialists
@@ -883,9 +887,9 @@
                     </span>
 
                     <span class="services-button__text">
-                      <h4 class="services-button__title">
+                      <h3 class="services-button__title">
                         Software engineering
-                      </h4>
+                      </h3>
 
                       <span class="services-button__description">
                         Solve the development problems and achieve the set goals
@@ -1017,9 +1021,9 @@
                     </span>
 
                     <span class="services-button__text">
-                      <h4 class="services-button__title">
+                      <h3 class="services-button__title">
                         Support consulting & In-house recruitment
-                      </h4>
+                      </h3>
 
                       <span class="services-button__description">
                         Use our knowledge and implement profitable solutions
