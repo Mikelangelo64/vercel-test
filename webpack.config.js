@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // generate multiple html files
 const htmlPageNames = [];
@@ -45,6 +46,14 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'styles.css',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/assets/video'),
+          to: path.resolve(__dirname, 'public/assets/video'),
+        },
+      ],
     }),
   ].concat(multipleHtmlPlugins),
 
